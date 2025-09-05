@@ -1,0 +1,44 @@
+FID Evaluation Result
+=====================
+
+Model & Generation
+- Model: Stable Diffusion 1.5 (runwayml/stable-diffusion-v1-5)
+- Guidance (CFG): 7.5
+- Inference steps: 50
+- Output resolution: 256×256 (generated natively, no resize)
+- Generated images dir: generated_images_step50_cfg7_5
+
+Dataset & Sampling
+- Dataset: COCO val2014 (30k captions CSV)
+- Subset used: FIRST 10,000 entries (from MS-COCO_val2014_30k_captions.csv)
+- Number of samples evaluated: 10,000
+
+Evaluation
+- Inception network: Inception v3 (pool3, 2048-D features)
+- Device used for feature extraction: CPU
+- Batch size (feature extraction): 8
+- Real stats files: real_mu_10k.npy, real_sigma_10k.npy
+- Generated stats files: generated_mu_10k.npy, generated_sigma_10k.npy
+
+Metrics
+- FID: 55.14
+
+Shapes
+- Real:    mu shape = (2048,), sigma shape = (2048, 2048)
+- Generated: mu shape = (2048,), sigma shape = (2048, 2048)
+
+Provenance
+- CSV path: MS-COCO_val2014_30k_captions.csv
+- Command used:
+  python fid_val_v2.py \
+      --generated_dir generated_images_step50_cfg7_5 \
+      --csv_path MS-COCO_val2014_30k_captions.csv \
+      --max_images 10000 \
+      --use_30k_subset \
+      --download \
+      --save_real_stats \
+      --save_gen_stats \
+      --batch_size 8
+
+Timestamp
+- Run recorded on: 2025-09-05 (America/Toronto)
