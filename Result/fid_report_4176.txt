@@ -1,0 +1,51 @@
+FID Evaluation Report
+====================
+
+Command Run:
+------------
+(sd15-eval) pete-chen@P-Linux:~/Desktop/research/generative-models/sd15_coco_eval$ python fid_cal_4176imgs.py \
+  --generated_dir generated_images_step50_cfg7_5_resolution512 \
+  --csv_path MS-COCO_val2014_30k_captions.csv \
+  --use_30k_subset \
+  --download \
+  --batch_size 16 \
+  --max_images 4176 \
+  --save_real_stats \
+  --save_gen_stats
+
+Environment:
+------------
+- Device: CUDA (GPU)
+
+Model & Generation
+------------------
+- Model: Stable Diffusion 1.5 (runwayml/stable-diffusion-v1-5)
+- Guidance (CFG): 7.5
+- Inference steps: 50
+- Output resolution: 512x512
+- Generated images dir: generated_images_step50_cfg7_5_resolution512
+
+Dataset Details:
+----------------
+- Generated images directory: generated_images_step50_cfg7_5_resolution512
+- COCO CSV: MS-COCO_val2014_30k_captions.csv
+- COCO val2014 directory: coco_val2014/val2014
+- Matched pair count (real vs. generated): 4176
+
+Processing:
+-----------
+- Real images processed: 4176
+  * Feature extraction batches: 261
+  * Statistics saved: real_mu_4176.npy, real_sigma_4176.npy
+- Generated images processed: 4176
+  * Feature extraction batches: 261
+  * Statistics saved: generated_mu_4176_512.npy, generated_sigma_4176_512.npy
+
+Results:
+--------
+FID Score: 27.67
+
+Statistics Shapes:
+- Real images: mu=(2048,), sigma=(2048, 2048)
+- Generated images: mu=(2048,), sigma=(2048, 2048)
+
