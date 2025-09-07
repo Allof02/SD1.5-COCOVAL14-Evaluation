@@ -1,5 +1,14 @@
-python sdxl_coco_gene.py --mode batch --csv_path MS-COCO_val2014_30k_captions.csv 
-    --resolution 512 --steps 50 --scheduler dpmpp --max_samples 3500 --batch_size 24 
-    --output_dir generated_image_sdxl_512_sc1024_3_5k --dtype fp16 --guidance 6.0
+python sdxl_coco_gene.py --mode batch --csv_path MS-COCO_val2014_30k_captions.csv --resolution 512 --steps 60 --scheduler dpmpp --max_samples 10 --batch_size 24 --output_dir generated_image_sdxl_512_sc1024_3_5k --dtype fp16 --guidance 6.0 --offset 0
 
-    (Size conditioning enabled: original_size=(1024, 1024), target_size=(512, 512), crops_coords_top_left=(0, 0))
+
+conda create -n sd-xl python=3.10 -y
+conda activate sd-xl
+
+pip install --index-url https://download.pytorch.org/whl/cu121 \
+  torch torchvision torchaudio
+
+pip install "diffusers>=0.31.0,<0.32" transformers accelerate safetensors \
+  pillow pandas tqdm scipy
+
+pip install clean-fid pytorch-fid evaluate numpy requests
+
