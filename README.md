@@ -2,6 +2,11 @@
 
 Evaluate Stable Diffusion 1.5 on COCO validation 2014 captions and calculate FID scores.
 
+ssh-keygen -t rsa -b 2048 -f
+
+type
+
+ssh -i
 
 ## Setup
 ```bash
